@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Rotation sequences</h1>
+<p class="lead">
+  A joint orientation is one rotation matrix R = R<sub>parent</sub><sup>T</sup> R<sub>child</sub>, but it can be
+  described by twelve different intrinsic sequences of three angles. Choose a sequence and angles, look at the
+  intermediate frames (′, ″) and the rotation axes, then click another sequence to see the same orientation re-expressed.
+</p>
+<section class="card" data-sequence-tool='{"sequence": "ZXY", "angles": [30, 20, 10]}'></section>
+<div class="prose">
+  <h2>Reading the table</h2>
+  <ul>
+    <li><strong>Cardan</strong> (Tait–Bryan) sequences use three different axes. The middle angle is limited to ±90°,
+      and gimbal lock happens at ±90°. The ISB lower-limb, spine and shoulder girdle JCS are Cardan sequences (ZXY, YXZ).</li>
+    <li><strong>Euler</strong> (proper) sequences repeat the first axis. The middle angle is in 0–180° (or its negative
+      twin), and gimbal lock happens at 0° and 180°. The ISB humerus uses YXY: at 0° elevation the plane of elevation and
+      axial rotation merge.</li>
+    <li>The first rotation is about an axis of the parent (e1), the last about an axis of the child (e3) and the middle one
+      about the floating axis e2. This is the Grood &amp; Suntay JCS read as an intrinsic sequence.</li>
+  </ul>
+</div>
+{% endblock %}

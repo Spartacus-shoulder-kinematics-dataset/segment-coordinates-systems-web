@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ page_title }}{% endblock %} · ISB coordinate systems</title>
+  <meta name="description" content="{{ description }}">
+  <script>
+    try { const t = localStorage.getItem("isb-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="static/css/site.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M8 24h18' stroke='%232f6bd8' stroke-width='3'/%3E%3Cpath d='M8 24V5' stroke='%232d9a47' stroke-width='3'/%3E%3Cpath d='M8 24l-5 5' stroke='%23d43d3d' stroke-width='3'/%3E%3C/svg%3E">
+  <script type="importmap">
+    {"imports": {"three": "{{ three_url }}/build/three.module.js", "three/addons/": "{{ three_url }}/examples/jsm/"}}
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a class="brand" href="index.html">
+        <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true"><path d="M8 24h18" stroke="var(--ax-z)" stroke-width="3"/><path d="M8 24V5" stroke="var(--ax-y)" stroke-width="3"/><path d="M8 24l-5 5" stroke="var(--ax-x)" stroke-width="3"/></svg>
+        ISB coordinate systems
+      </a>
+      <nav class="main" aria-label="Main">
+        <a href="concepts.html" {% if page == 'concepts' %}aria-current="page"{% endif %}>Concepts</a>
+        {% for r in regions %}<a href="{{ r.key }}.html" {% if page == r.key %}aria-current="page"{% endif %}>{{ r.title }}</a>
+        {% endfor %}
+        <a href="sequences.html" {% if page == 'sequences' %}aria-current="page"{% endif %}>Sequences</a>
+        <a href="reference.html" {% if page == 'reference' %}aria-current="page"{% endif %}>Reference</a>
+      </nav>
+      <button class="theme-btn" type="button" data-theme-toggle aria-label="Toggle dark mode">◐</button>
+    </div>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <footer>
+    <div class="inner">
+      Definitions paraphrase Wu et al. 2002, Wu et al. 2005 and Grood &amp; Suntay 1983; items marked
+      "verify against the paper" are uncertain. Geometry is computed in Python (numpy/scipy) and checked by tests;
+      drag to rotate the 3D views, scroll to zoom.<br>
+      Bone meshes and landmark positions: derived from <a href="https://lifesciencedb.jp/bp3d/" target="_blank" rel="noopener">BodyParts3D</a>,
+      © The Database Center for Life Science, licensed under
+      <a href="https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html" target="_blank" rel="noopener">CC Attribution 4.0 International</a>
+      (axis change and decimation; landmarks detected automatically). Three.js (MIT).
+    </div>
+  </footer>
+  {% block data %}{% endblock %}
+  <script type="module" src="static/js/pages.js"></script>
+</body>
+</html>

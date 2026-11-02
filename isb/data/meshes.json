@@ -1,0 +1,531 @@
+{
+ "attribution": "BodyParts3D, \u00a9 The Database Center for Life Science, licensed under CC Attribution 4.0 International",
+ "source": "https://lifesciencedb.jp/bp3d/",
+ "groups": {
+  "pelvis": {
+   "file": "static/meshes/pelvis.bin",
+   "vertices": 5871,
+   "triangles": 11205,
+   "min": [
+    -7.3,
+    752.0,
+    -144.8
+   ],
+   "max": [
+    139.1,
+    958.1,
+    144.9
+   ],
+   "parts": [
+    "right hip bone",
+    "left hip bone",
+    "sacrum"
+   ]
+  },
+  "femur": {
+   "file": "static/meshes/femur.bin",
+   "vertices": 1574,
+   "triangles": 3102,
+   "min": [
+    49.5,
+    368.1,
+    31.9
+   ],
+   "max": [
+    112.2,
+    834.3,
+    150.1
+   ],
+   "parts": [
+    "right femur"
+   ]
+  },
+  "tibia": {
+   "file": "static/meshes/tibia.bin",
+   "vertices": 857,
+   "triangles": 1664,
+   "min": [
+    52.1,
+    -6.0,
+    35.2
+   ],
+   "max": [
+    114.8,
+    373.9,
+    109.4
+   ],
+   "parts": [
+    "right tibia"
+   ]
+  },
+  "fibula": {
+   "file": "static/meshes/fibula.bin",
+   "vertices": 593,
+   "triangles": 1142,
+   "min": [
+    48.5,
+    -25.3,
+    84.3
+   ],
+   "max": [
+    78.2,
+    359.1,
+    120.2
+   ],
+   "parts": [
+    "right fibula"
+   ]
+  },
+  "patella": {
+   "file": "static/meshes/patella.bin",
+   "vertices": 178,
+   "triangles": 306,
+   "min": [
+    101.0,
+    361.5,
+    60.6
+   ],
+   "max": [
+    122.7,
+    400.8,
+    102.3
+   ],
+   "parts": [
+    "right patella"
+   ]
+  },
+  "talus": {
+   "file": "static/meshes/talus.bin",
+   "vertices": 812,
+   "triangles": 1380,
+   "min": [
+    48.8,
+    -31.2,
+    49.6
+   ],
+   "max": [
+    105.6,
+    3.1,
+    90.1
+   ],
+   "parts": [
+    "right talus"
+   ]
+  },
+  "foot": {
+   "file": "static/meshes/foot.bin",
+   "vertices": 4804,
+   "triangles": 8301,
+   "min": [
+    24.0,
+    -69.8,
+    44.9
+   ],
+   "max": [
+    192.2,
+    -6.2,
+    152.3
+   ],
+   "parts": [
+    "right calcaneus",
+    "navicular bone of right foot",
+    "right cuboid bone",
+    "right medial cuneiform bone",
+    "right intermediate cuneiform bone",
+    "right lateral cuneiform bone",
+    "right first metatarsal bone",
+    "right second metatarsal bone",
+    "right third metatarsal bone",
+    "right fourth metatarsal bone",
+    "right fifth metatarsal bone"
+   ]
+  },
+  "C4": {
+   "file": "static/meshes/C4.bin",
+   "vertices": 1469,
+   "triangles": 2410,
+   "min": [
+    40.7,
+    1404.6,
+    -26.4
+   ],
+   "max": [
+    89.1,
+    1432.1,
+    27.8
+   ],
+   "parts": [
+    "fourth cervical vertebra"
+   ]
+  },
+  "C5": {
+   "file": "static/meshes/C5.bin",
+   "vertices": 1489,
+   "triangles": 2140,
+   "min": [
+    36.1,
+    1393.8,
+    -28.3
+   ],
+   "max": [
+    90.8,
+    1418.0,
+    29.7
+   ],
+   "parts": [
+    "fifth cervical vertebra"
+   ]
+  },
+  "T7": {
+   "file": "static/meshes/T7.bin",
+   "vertices": 1478,
+   "triangles": 2574,
+   "min": [
+    0.7,
+    1179.3,
+    -36.3
+   ],
+   "max": [
+    67.0,
+    1241.8,
+    37.2
+   ],
+   "parts": [
+    "seventh thoracic vertebra"
+   ]
+  },
+  "T8": {
+   "file": "static/meshes/T8.bin",
+   "vertices": 1392,
+   "triangles": 2424,
+   "min": [
+    0.9,
+    1153.8,
+    -32.2
+   ],
+   "max": [
+    72.0,
+    1213.0,
+    33.7
+   ],
+   "parts": [
+    "eighth thoracic vertebra"
+   ]
+  },
+  "L4": {
+   "file": "static/meshes/L4.bin",
+   "vertices": 1754,
+   "triangles": 3211,
+   "min": [
+    26.2,
+    938.7,
+    -41.4
+   ],
+   "max": [
+    110.4,
+    983.4,
+    42.8
+   ],
+   "parts": [
+    "fourth lumbar vertebra"
+   ]
+  },
+  "L5": {
+   "file": "static/meshes/L5.bin",
+   "vertices": 1765,
+   "triangles": 3312,
+   "min": [
+    18.3,
+    904.6,
+    -49.6
+   ],
+   "max": [
+    99.1,
+    954.8,
+    51.0
+   ],
+   "parts": [
+    "fifth lumbar vertebra"
+   ]
+  },
+  "thorax": {
+   "file": "static/meshes/thorax.bin",
+   "vertices": 17124,
+   "triangles": 30297,
+   "min": [
+    -0.0,
+    1008.1,
+    -135.9
+   ],
+   "max": [
+    213.7,
+    1391.8,
+    137.2
+   ],
+   "parts": [
+    "manubrium",
+    "body of sternum",
+    "xiphoid process",
+    "seventh cervical vertebra",
+    "first thoracic vertebra",
+    "second thoracic vertebra",
+    "third thoracic vertebra",
+    "fourth thoracic vertebra",
+    "fifth thoracic vertebra",
+    "sixth thoracic vertebra",
+    "seventh thoracic vertebra",
+    "eighth thoracic vertebra",
+    "ninth thoracic vertebra",
+    "tenth thoracic vertebra",
+    "eleventh thoracic vertebra",
+    "twelfth thoracic vertebra",
+    "right first rib",
+    "right second rib",
+    "right third rib",
+    "right fourth rib",
+    "right fifth rib",
+    "right sixth rib",
+    "right seventh rib",
+    "right eighth rib",
+    "right ninth rib",
+    "right tenth rib",
+    "right eleventh rib",
+    "right twelfth rib",
+    "left first rib",
+    "left second rib",
+    "left third rib",
+    "left fourth rib",
+    "left fifth rib",
+    "left sixth rib",
+    "left seventh rib",
+    "left eighth rib",
+    "left ninth rib",
+    "left tenth rib",
+    "left eleventh rib",
+    "left twelfth rib",
+    "right first costal cartilage",
+    "right second costal cartilage",
+    "right third costal cartilage",
+    "right fourth costal cartilage",
+    "right fifth costal cartilage",
+    "right sixth costal cartilage",
+    "right seventh costal cartilage",
+    "left first costal cartilage",
+    "left second costal cartilage",
+    "left third costal cartilage",
+    "left fourth costal cartilage",
+    "left fifth costal cartilage",
+    "left sixth costal cartilage",
+    "left seventh costal cartilage"
+   ]
+  },
+  "clavicle": {
+   "file": "static/meshes/clavicle.bin",
+   "vertices": 583,
+   "triangles": 1146,
+   "min": [
+    54.4,
+    1308.6,
+    9.7
+   ],
+   "max": [
+    146.9,
+    1355.4,
+    145.3
+   ],
+   "parts": [
+    "right clavicle"
+   ]
+  },
+  "scapula": {
+   "file": "static/meshes/scapula.bin",
+   "vertices": 3499,
+   "triangles": 6982,
+   "min": [
+    -5.1,
+    1183.9,
+    57.0
+   ],
+   "max": [
+    102.9,
+    1349.9,
+    166.4
+   ],
+   "parts": [
+    "right scapula"
+   ]
+  },
+  "humerus": {
+   "file": "static/meshes/humerus.bin",
+   "vertices": 2233,
+   "triangles": 3784,
+   "min": [
+    51.0,
+    1029.2,
+    140.1
+   ],
+   "max": [
+    100.2,
+    1336.5,
+    240.8
+   ],
+   "parts": [
+    "right humerus"
+   ]
+  },
+  "ulna": {
+   "file": "static/meshes/ulna.bin",
+   "vertices": 500,
+   "triangles": 834,
+   "min": [
+    44.8,
+    805.2,
+    196.9
+   ],
+   "max": [
+    123.5,
+    1052.5,
+    247.2
+   ],
+   "parts": [
+    "right ulna"
+   ]
+  },
+  "radius": {
+   "file": "static/meshes/radius.bin",
+   "vertices": 388,
+   "triangles": 672,
+   "min": [
+    61.1,
+    805.8,
+    219.8
+   ],
+   "max": [
+    126.9,
+    1035.0,
+    279.5
+   ],
+   "parts": [
+    "right radius"
+   ]
+  },
+  "carpus": {
+   "file": "static/meshes/carpus.bin",
+   "vertices": 2705,
+   "triangles": 4366,
+   "min": [
+    110.5,
+    725.3,
+    225.2
+   ],
+   "max": [
+    153.9,
+    811.8,
+    309.6
+   ],
+   "parts": [
+    "right scaphoid",
+    "right lunate",
+    "right triquetral",
+    "right pisiform",
+    "right trapezium",
+    "right trapezoid",
+    "right capitate",
+    "right hamate",
+    "right first metacarpal bone",
+    "right fourth metacarpal bone",
+    "right fifth metacarpal bone"
+   ]
+  },
+  "MC3": {
+   "file": "static/meshes/MC3.bin",
+   "vertices": 404,
+   "triangles": 702,
+   "min": [
+    112.3,
+    720.8,
+    252.5
+   ],
+   "max": [
+    142.7,
+    785.3,
+    272.3
+   ],
+   "parts": [
+    "right third metacarpal bone"
+   ]
+  },
+  "MC2": {
+   "file": "static/meshes/MC2.bin",
+   "vertices": 418,
+   "triangles": 748,
+   "min": [
+    117.1,
+    718.9,
+    261.8
+   ],
+   "max": [
+    142.8,
+    786.9,
+    292.7
+   ],
+   "parts": [
+    "right second metacarpal bone"
+   ]
+  },
+  "PP2": {
+   "file": "static/meshes/PP2.bin",
+   "vertices": 226,
+   "triangles": 386,
+   "min": [
+    134.1,
+    685.8,
+    281.0
+   ],
+   "max": [
+    156.8,
+    723.2,
+    302.8
+   ],
+   "parts": [
+    "proximal phalanx of right index finger"
+   ]
+  },
+  "MP2": {
+   "file": "static/meshes/MP2.bin",
+   "vertices": 190,
+   "triangles": 264,
+   "min": [
+    151.3,
+    671.0,
+    294.4
+   ],
+   "max": [
+    172.1,
+    691.5,
+    309.0
+   ],
+   "parts": [
+    "middle phalanx of right index finger"
+   ]
+  },
+  "DP2": {
+   "file": "static/meshes/DP2.bin",
+   "vertices": 188,
+   "triangles": 210,
+   "min": [
+    169.6,
+    661.8,
+    301.4
+   ],
+   "max": [
+    186.7,
+    675.7,
+    311.4
+   ],
+   "parts": [
+    "distal phalanx of right index finger"
+   ]
+  }
+ }
+}

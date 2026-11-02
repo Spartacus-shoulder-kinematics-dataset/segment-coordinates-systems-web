@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Reference tables</h1>
+<p class="lead">
+  Every segment frame and joint coordinate system on one page. The complete dataset (definitions, construction
+  steps, evaluated frames for both sides, neutral angles) is available as <a href="data/isb.json" download>isb.json</a>.
+</p>
+<input type="search" placeholder="Filter, e.g. scapula, YXY, floating…" aria-label="Filter the tables" data-filter>
+
+<h2>Segment coordinate systems</h2>
+<div class="card table-wrap">
+  <table>
+    <thead><tr><th>Region</th><th>Segment</th><th>Origin</th><th class="ax-x">X</th><th class="ax-y">Y</th><th class="ax-z">Z</th><th>Source</th></tr></thead>
+    <tbody>
+      {% for s in segment_rows %}
+      <tr data-filter-row>
+        <td><a href="{{ s.region }}.html#seg-{{ s.key }}">{{ region_titles[s.region] }}</a></td>
+        <td><strong>{{ s.name }}</strong>{% if s.option_label %}<div class="muted small">{{ s.option_label }}</div>{% endif %}</td>
+        <td>{{ s.axes_text.o }}</td><td>{{ s.axes_text.X }}</td><td>{{ s.axes_text.Y }}</td><td>{{ s.axes_text.Z }}</td>
+        <td class="small">{{ references[s.reference].short }}{% if s.needs_check %}<div class="warn-text" style="color:var(--warn)">verify</div>{% endif %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<h2>Joint coordinate systems</h2>
+<div class="card table-wrap">
+  <table>
+    <thead><tr><th>Region</th><th>Joint</th><th>Parent → child</th><th>Sequence</th><th>e1</th><th class="ax-e2">e2</th><th>e3</th><th>Source</th></tr></thead>
+    <tbody>
+      {% for j in joint_rows %}
+      <tr data-filter-row>
+        <td><a href="{{ j.region }}.html#joint-{{ j.key }}">{{ region_titles[j.region] }}</a></td>
+        <td><strong>{{ j.name }}</strong></td>
+        <td>{{ segment_names[j.parent] }} → {{ segment_names[j.child] }}</td>
+        <td><code>{{ j.sequence }}</code></td>
+        {% for a in j.angles %}
+        <td>{{ a.label }}<div class="muted small">+ {{ a.positive }}</div></td>
+        {% endfor %}
+        <td class="small">{{ references[j.reference].short }}{% if j.needs_check %}<div style="color:var(--warn)">verify</div>{% endif %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<h2>Landmarks</h2>
+<div class="card table-wrap">
+  <table class="landmarks-table">
+    <thead><tr><th>Key</th><th>Description</th><th>Bone</th><th class="num">X</th><th class="num">Y</th><th class="num">Z</th></tr></thead>
+    <tbody>
+      {% for lm in landmarks.values() %}
+      <tr data-filter-row><td>{{ lm.key }}</td><td>{{ lm.description }}</td><td>{{ lm.bone }}</td>
+        <td class="num">{{ '%.0f'|format(lm.R[0]) }}</td><td class="num">{{ '%.0f'|format(lm.R[1]) }}</td><td class="num">{{ '%.0f'|format(lm.R[2]) }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<h2>References</h2>
+<ul class="prose">
+  {% for r in references.values() %}
+  <li>{{ r.full }} <a href="https://doi.org/{{ r.doi }}" target="_blank" rel="noopener">doi:{{ r.doi }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Concepts</h1>
+<p class="lead">
+  What the ISB recommendations standardize, and the handful of mathematical ideas needed to read every region page.
+</p>
+
+<div class="region-layout">
+  <nav class="toc" aria-label="On this page">
+    <h4>On this page</h4>
+    <a href="#global">Global frame</a>
+    <a href="#lcs">Segment frames (LCS)</a>
+    <a href="#jcs">Joint coordinate systems</a>
+    <a href="#euler">JCS = Euler/Cardan sequence</a>
+    <a href="#demo">Interactive JCS</a>
+    <a href="#lock">Gimbal lock</a>
+    <a href="#signs">Signs and names</a>
+    <a href="#left">Left side</a>
+    <a href="#translations">Translations</a>
+    <a href="#pitfalls">Practical pitfalls</a>
+    <a href="#refs">References</a>
+  </nav>
+  <div class="prose">
+    <h2 id="global">1. Global frame and notation</h2>
+    <p>
+      All ISB frames are right-handed and orthonormal. In the neutral (anatomical) posture every segment frame is
+      approximately aligned with the global frame:
+    </p>
+    <dl class="kv">
+      <dt class="ax-x">X</dt><dd>anterior (forward)</dd>
+      <dt class="ax-y">Y</dt><dd>superior (up), i.e. along the long axis of a limb segment, pointing proximally</dd>
+      <dt class="ax-z">Z</dt><dd>to the right</dd>
+    </dl>
+    <p>
+      Wu &amp; Cavanagh (1995) set this global convention; Wu et al. (2002, 2005) define the segment and joint frames.
+      On this site every 3D view uses these axes directly, in millimetres. Bones and landmarks come from one real
+      subject (BodyParts3D) standing in the anatomical position: each landmark was detected on the bone surface, so
+      the frames show real anatomical misalignments (tibial torsion, scapular protraction, a relaxed hand).
+    </p>
+
+    <h2 id="lcs">2. Segment coordinate systems (LCS)</h2>
+    <p>Each segment frame is built from palpable or estimated landmarks with the same recipe:</p>
+    <ol>
+      <li><strong>Origin</strong>: a landmark or a joint centre (e.g. IJ for the thorax, the hip joint centre for the pelvis and femur).</li>
+      <li><strong>First axis</strong>: the unit vector between two landmarks, e.g. Z = (LM − MM)/‖LM − MM‖ at the ankle,
+        or Y = (GH − mid(EL, EM))/‖…‖ for the humerus.</li>
+      <li><strong>Second axis</strong>: the normal of a plane through three landmarks, obtained by a cross product. The
+        <em>order</em> of the cross product fixes the direction ("pointing anteriorly").</li>
+      <li><strong>Third axis</strong>: the cross product of the first two, which guarantees orthogonality and right-handedness.</li>
+    </ol>
+    <p>
+      The recommendation text usually says "the common line perpendicular to X and Z, pointing cranially". That is the
+      last cross product, and the stated direction only holds if the previous cross products were taken in the right
+      order. The construction steps on each region page make these orders explicit.
+    </p>
+    <p>
+      Some frames have no landmarks at all: the calcaneus and talus frames coincide with the tibia/fibula frame in the
+      neutral posture and are then carried by the bone. Others borrow an axis from another segment: the clavicle takes
+      the thorax Y axis, and humerus option 2 takes the forearm axis at 90° of elbow flexion.
+    </p>
+
+    <h2 id="jcs">3. Joint coordinate systems (Grood &amp; Suntay)</h2>
+    <p>Grood &amp; Suntay (1983) describe a joint with three rotation axes that each have a clinical meaning:</p>
+    <ul>
+      <li><strong>e1</strong>, fixed in the proximal (parent) segment: usually its Z axis, for flexion/extension;</li>
+      <li><strong>e3</strong>, fixed in the distal (child) segment: usually its Y axis, for axial (internal/external) rotation;</li>
+      <li><strong class="ax-e2">e2</strong>, the <em>floating axis</em>, perpendicular to both: e2 = (e3 × e1)/‖e3 × e1‖. It
+        belongs to neither segment and is used for ab/adduction, inversion/eversion and similar rotations.</li>
+    </ul>
+    <p>
+      Because the three axes are defined directly, the three rotations can be described without talking about an
+      order. ISB adopted this construction for the ankle, hip and spine (2002) and for the elbow, wrist and hand (2005).
+    </p>
+
+    <h2 id="euler">4. A JCS is an intrinsic Euler/Cardan sequence</h2>
+    <p>
+      With R<sub>p</sub> and R<sub>c</sub> the parent and child frames (columns = axes in global coordinates), the
+      orientation of the child in the parent is R = R<sub>p</sub><sup>T</sup> R<sub>c</sub>. For the lower-limb JCS,
+    </p>
+    <p class="formula">R = R<sub>Z</sub>(α) · R<sub>X</sub>(β) · R<sub>Y</sub>(γ)</p>
+    <p>
+      is an intrinsic <code>ZXY</code> Cardan sequence: α about the parent Z (= e1), β about the once-rotated X′ (= e2,
+      the floating axis), γ about the child Y (= e3). Decomposing R with this sequence gives exactly the Grood &amp;
+      Suntay angles, which is how every joint on this site is computed. The shoulder uses <code>YXZ</code> for the
+      girdle (SC, AC, ST) and <code>YXY</code> for the humerus (plane of elevation, elevation, axial rotation).
+    </p>
+    <p>
+      Floating axis by cross product: for cyclic Cardan sequences (XYZ, YZX, ZXY) e2 = e3 × e1, for the others
+      e2 = e1 × e3. For Euler sequences the cross product changes sign with the middle angle, so the site computes e2 as
+      "the second rotation axis after the first rotation", which is always well defined.
+    </p>
+
+    <h2 id="demo">Interactive: a JCS as an intrinsic sequence</h2>
+    <p class="muted">
+      Parent frame (dashed), the frames after the first (′) and second (″) rotations, and the child frame (‴). The e1,
+      e2 and e3 lines are the JCS axes, and the arcs are α, β and γ.
+    </p>
+  </div>
+</div>
+<section class="card" data-sequence-tool='{"sequence": "ZXY", "angles": [40, 15, 25], "table": false}'></section>
+
+<div class="region-layout">
+  <div></div>
+  <div class="prose">
+    <h2 id="lock">5. Gimbal lock</h2>
+    <p>
+      When the middle angle reaches the singular value, e1 and e3 become parallel and only the sum (or difference) of
+      the first and third angles is defined. Cardan sequences lock at β = ±90°, which lower-limb joints rarely reach.
+      Euler sequences lock at β = 0° or 180°. For the ISB humerus (YXY) the lock is at <em>zero elevation</em>, the arm
+      hanging along the body, so plane of elevation and axial rotation are unstable in that common posture (Šenk &amp;
+      Chèze 2006). Alternatives such as XZY have been proposed for the glenohumeral joint (Phadke et al. 2011).
+    </p>
+    <p>
+      Every joint card shows a <em>gimbal margin</em>, |cos β| for Cardan and |sin β| for Euler sequences, with a warning
+      below sin 10°.
+    </p>
+
+    <h2 id="signs">6. Signs and clinical names</h2>
+    <p>
+      The raw angles follow the right-hand rule about the axis as defined: with Z to the right, a positive rotation
+      about Z tilts X up towards Y. The clinical name of the positive direction depends on where the distal segment is:
+    </p>
+    <ul>
+      <li>hip, elbow, wrist, fingers: a positive Z rotation is <strong>flexion</strong> (the distal segment swings forward);</li>
+      <li>knee: a positive Z rotation is <strong>extension</strong>, so knee flexion is reported as −α (Grood &amp; Suntay give flexion as positive);</li>
+      <li>ankle: positive is <strong>dorsiflexion</strong>; spine: positive is <strong>extension</strong>;</li>
+      <li>humerus (YXY): <strong>elevation is negative</strong>, and a plane of elevation of 0° is abduction, 90° forward flexion.</li>
+    </ul>
+    <p>Each joint card lists the positive/negative names, and they are checked by the site's tests.</p>
+
+    <h2 id="left">7. The left side</h2>
+    <p>
+      The recommendations are written for the right side. The left side is the mirror image through the sagittal plane,
+      M = diag(1, 1, −1). The mirror image of a right-handed frame is left-handed, so frames cannot simply be mirrored.
+      Two equivalent practices are used:
+    </p>
+    <ol>
+      <li><strong>Keep the ISB orientation on both sides</strong> (X anterior, Y superior, Z to the right):
+        R<sub>left</sub> = M R<sub>right</sub> M. Joint angles then satisfy R<sub>rel,left</sub> = M R<sub>rel,right</sub> M, which
+        keeps rotations about Z and <em>flips rotations about X and Y</em>. Clinical left angles are the raw angles
+        multiplied by +1 for Z and −1 for X or Y (for ZXY: +, −, −; for YXY: −, −, −).</li>
+      <li><strong>Mirror the left data</strong> (z → −z) and process it as a right side.</li>
+    </ol>
+    <p>
+      Both give the same clinical angles. Two details follow. First, applying the right-side formulas literally to left
+      landmarks flips some axes, because every cross product of mirrored vectors changes sign; the Left view of each
+      segment shows which axes need flipping. Second, for Euler sequences the preferred sign of the middle angle flips
+      too, because it is a rotation about X. The site uses practice 1; the SPARTACUS project applies the same
+      M R M rule to align left-side literature data.
+    </p>
+
+    <h2 id="translations">8. Translations</h2>
+    <p>
+      Grood &amp; Suntay also define three clinical translations: the position of the distal origin relative to the
+      proximal origin, projected on e1 (medial–lateral shift), e2 (anterior–posterior drawer) and e3
+      (compression–distraction). Because e1 and e3 are not perpendicular in general, the (e1, e2, e3) basis is not
+      orthogonal and these are not Cartesian components. The playgrounds on this site rotate the distal segment about a fixed pivot and do not model translations.
+    </p>
+
+    <h2 id="pitfalls">9. Practical pitfalls</h2>
+    <ul>
+      <li><strong>Neutral posture is not zero.</strong> In the anatomical position the shoulder girdle angles are far from
+        zero (clavicle retracted ~20°, scapula protracted ~30°). Use <em>Anatomical posture</em> on the joint cards to see them.</li>
+      <li><strong>Short landmark bases amplify errors.</strong> The humeral epicondyles are ~8 cm apart, so a 5 mm
+        error rotates humerus option 1 by several degrees about Y; option 2 uses the forearm as a longer lever.</li>
+      <li><strong>Axis cross-talk.</strong> A misplaced flexion axis (e1) leaks flexion into the floating-axis angle:
+        the classic "knee varus/valgus artefact" in gait.</li>
+      <li><strong>Joint centres are estimated.</strong> The hip joint centre and GH are not palpable; regression or
+        functional methods change the femur and humerus frames.</li>
+      <li><strong>Sequence dependence.</strong> The same orientation gives very different numbers in another sequence
+        (see <a href="sequences.html">Sequences</a>), so always report the sequence.</li>
+    </ul>
+
+    <h2 id="refs">References</h2>
+    <ul>
+      {% for r in references.values() %}
+      <li>{{ r.full }} <a href="https://doi.org/{{ r.doi }}" target="_blank" rel="noopener">doi:{{ r.doi }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div>
+    <h1>ISB segment and joint coordinate systems, in 3D</h1>
+    <p class="lead">
+      Every local coordinate system (LCS) and joint coordinate system (JCS) of the ISB recommendations, built step by
+      step from anatomical landmarks. Move the joints yourself, switch between the right and left sides, and compare
+      the ISB sequence with the eleven others.
+    </p>
+    <p>
+      <a class="btn primary" href="concepts.html">Start with the concepts</a>
+      <a class="btn" href="shoulder.html">Jump to the shoulder</a>
+    </p>
+  </div>
+  <div class="callout">
+    <h4 style="margin-top:0">The three rules behind every page</h4>
+    <dl class="kv">
+      <dt class="ax-x">X</dt><dd>points anteriorly</dd>
+      <dt class="ax-y">Y</dt><dd>points superiorly (along the long axis of limb segments)</dd>
+      <dt class="ax-z">Z</dt><dd>points to the right (laterally for the right side)</dd>
+      <dt>e1</dt><dd>fixed in the proximal segment (usually its Z: flexion/extension)</dd>
+      <dt class="ax-e2">e2</dt><dd>floating axis, perpendicular to e1 and e3</dd>
+      <dt>e3</dt><dd>fixed in the distal segment (usually its Y: axial rotation)</dd>
+    </dl>
+  </div>
+</section>
+
+<h2>Regions</h2>
+<div class="region-grid">
+  {% for r in regions %}
+  <a class="region-tile" href="{{ r.key }}.html">
+    <h3>{{ r.title }}</h3>
+    <span class="chip">{{ r.status }}</span>
+    <p>{{ r.segments|length }} segment frames · {{ r.joints|length }} joint coordinate systems</p>
+    <p>{{ r.references|map('ref_short')|join(', ') }}</p>
+  </a>
+  {% endfor %}
+  <a class="region-tile" href="sequences.html">
+    <h3>Rotation sequences</h3>
+    <span class="chip">Tool</span>
+    <p>Any of the 12 intrinsic Euler/Cardan sequences, intermediate frames, gimbal lock and conversions.</p>
+  </a>
+  <a class="region-tile" href="reference.html">
+    <h3>Reference tables</h3>
+    <span class="chip">All definitions</span>
+    <p>Every frame and JCS in one searchable table, plus the full dataset as JSON.</p>
+  </a>
+</div>
+
+<h2>How to read a region page</h2>
+<ol class="prose">
+  <li><strong>Segment cards</strong> show the recommendation text, then the construction as numbered steps. Each step is
+    a formula evaluated on landmarks detected on real bone meshes; <em>Next</em> draws it in 3D with the landmarks it
+    uses highlighted. <em>Bones</em> switches the meshes between solid, ghost and hidden.</li>
+  <li><strong>Right / Left</strong> replays the construction on the mirrored landmarks and shows which axes must be
+    flipped to keep the ISB orientation.</li>
+  <li><strong>Joint cards</strong> list e1, e2, e3 with the clinical meaning of positive rotations. The sliders pose the
+    distal segment; arcs show each angle about its axis, and a warning appears near gimbal lock.</li>
+  <li><strong>Same pose in 12 sequences</strong> decomposes the current orientation with every sequence, to show how
+    much the numbers depend on the sequence.</li>
+</ol>
+{% endblock %}

@@ -1,0 +1,6 @@
+{
+  "name": "isb-web",
+  "private": true,
+  "type": "module",
+  "description": "ES module marker so node can import static/js/*.js in tests"
+}
